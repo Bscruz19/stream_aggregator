@@ -1,4 +1,4 @@
-defmodule StreamAggregator.Router do
+defmodule StreamAggregatorWeb.Router do
   use Plug.Router
 
   plug(:match)

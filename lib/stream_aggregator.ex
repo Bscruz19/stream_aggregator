@@ -3,7 +3,7 @@ defmodule StreamAggregator do
 
   use Application
 
-  alias StreamAggregator.{Router, Server, SocketHandler}
+  alias StreamAggregatorWeb.{Router, Server, SocketHandler}
 
   def start(_type, _args) do
     children = [

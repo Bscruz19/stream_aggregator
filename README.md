@@ -24,7 +24,7 @@ $ make run
 ## usage
 
 ```bash
-$(while true; do cat text.txt; done) | wscat -c ws://127.0.0.1:1234
+$ (while true; do cat text.txt; done) | wscat -c ws://127.0.0.1:1234
 ```
 
 ## Running tests
@@ -32,6 +32,3 @@ $(while true; do cat text.txt; done) | wscat -c ws://127.0.0.1:1234
 ```bash
 $ make tests
 ```
-## Development notes
-
-I used `GenServer` to maintain the socket and state words group and dispatch a recursive function that communicate the socket client about the most frequent word.

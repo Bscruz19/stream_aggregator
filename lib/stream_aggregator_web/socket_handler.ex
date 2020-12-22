@@ -1,9 +1,9 @@
-defmodule StreamAggregator.SocketHandler do
+defmodule StreamAggregatorWeb.SocketHandler do
   @moduledoc false
 
   @behaviour :cowboy_websocket
 
-  alias StreamAggregator.Server
+  alias StreamAggregatorWeb.Server
 
   def init(request, _state) do
     state = %{registry_key: request.path}

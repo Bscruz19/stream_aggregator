@@ -1,9 +1,9 @@
-defmodule StreamAggregator.Server do
+defmodule StreamAggregatorWeb.Server do
   @moduledoc false
 
   use GenServer
 
-  @one_minute Application.get_env(:stream_aggregator, :notification_time)
+  @notification_time Application.get_env(:stream_aggregator, :notification_time)
 
   alias StreamAggregator.Words
 
@@ -60,7 +60,7 @@ defmodule StreamAggregator.Server do
   end
 
   defp words_notification_worker(socket) do
-    :timer.sleep(@one_minute)
+    :timer.sleep(@notification_time)
 
     word = most_frequent_word()
 
