@@ -3,7 +3,7 @@ defmodule StreamAggregator do
 
   use Application
 
-  alias StreamAggregator.Server
+  alias StreamAggregator.{Router, Server, SocketHandler}
 
   def start(_type, _args) do
     children = [
@@ -11,7 +11,7 @@ defmodule StreamAggregator do
       {Task.Supervisor, name: Server.TaskSupervisor},
       Plug.Cowboy.child_spec(
         scheme: :http,
-        plug: StreamAggregator.Router,
+        plug: Router,
         options: [dispatch: dispatch(), port: web_port()]
       ),
       Registry.child_spec(keys: :duplicate, name: Registry.StreamAggregator)
@@ -26,8 +26,8 @@ defmodule StreamAggregator do
     [
       {:_,
        [
-         {"/", StreamAggregator.SocketHandler, []},
-         {:_, Plug.Cowboy.Handler, {StreamAggregator.Router, []}}
+         {"/", SocketHandler, []},
+         {:_, Plug.Cowboy.Handler, {Router, []}}
        ]}
     ]
   end
